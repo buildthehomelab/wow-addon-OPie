@@ -54,6 +54,26 @@ them to the expected action endpoints in the harness.
 Radial selection, macro execution, saved bindings and combat behavior still
 require testing in the 3.3.5a game client. This integration has not been deployed.
 
+## Evermore professions ring
+
+With `RetailProfessions` enabled, the **Professions** ring adds **Milling** and
+**Prospecting** shortcuts for characters who know those abilities. Each shortcut
+opens its profession with Retail Professions' herbs or ore view selected. Choose
+materials, amounts, and Mill All or Prospect All there; opening a view does not
+start processing or select a material for you.
+
+When `ArchaeologyUI` is enabled, the same ring also includes the **Archaeology**
+sub-ring. Either addon can be used on its own. Assign the Professions ring a key
+in `/opie`, and use `/rk` to customize it. It has no default binding.
+
+The shortcuts use Retail Professions' existing pending-view API and localized
+Inscription/Jewelcrafting casts through OPie's secure macro buttons. They require
+the realm's normal Retail Professions setup and its retail crafting window.
+If you previously selected `/prof classic`, switch back with `/prof retail`.
+No server code, server manifest pin or additional client patch is needed.
+Opening the profession and selecting the refine page, including repeated use,
+DragonUI hosting and combat restrictions, still need testing in the game client.
+
 ## Credits
 
 - OPie: foxlit ([go-hero.net/opie](http://www.go-hero.net/opie/))
