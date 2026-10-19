@@ -656,6 +656,7 @@ do -- Hook linking for edit box
 	local O_ChatEdit_InsertLink = ChatEdit_InsertLink;
 	function ChatEdit_InsertLink(link, ...)
 		if GetCurrentKeyBoardFocus() == RKCD_EntryMacro then
+			local isEmpty = not RKCD_EntryMacro:GetText():match("%S");
 			if link:match("item:") then
 				if isEmpty then
 					RKCD_EntryMacro:Insert((GetItemSpell(link) and SLASH_USE1 or SLASH_EQUIP1) .. " " .. GetItemInfo(link));

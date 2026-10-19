@@ -32,13 +32,13 @@ local function updateSpellCache(event)
 	local changed, inorder, last = false, true, select(2, GetCompanionInfo("CRITTER", 1));
 	for i=1,GetNumCompanions("CRITTER") do
 		local sname, cname = GetSpellInfo((select(3, GetCompanionInfo("CRITTER",i)))), select(2, GetCompanionInfo("CRITTER", i));
-		companionSpellsLL[sname:lower()], companionSpells[sname], changed = sname, i, changed or (companionSpells[csID] == nil);
+		companionSpellsLL[sname:lower()], companionSpells[sname], changed = sname, i, changed or (companionSpells[sname] ~= i);
 		inorder, last = last and cname and inorder and cname >= last, cname;
 	end
 	last = select(2,GetCompanionInfo("MOUNT", 1));
 	for i=1,GetNumCompanions("MOUNT") do
 		local sname, cname = GetSpellInfo((select(3, GetCompanionInfo("MOUNT",i)))), select(2, GetCompanionInfo("MOUNT", i));
-		companionSpellsLL[sname:lower()], companionSpells[sname], changed = sname, -i, changed or (companionSpells[csID] == nil);
+		companionSpellsLL[sname:lower()], companionSpells[sname], changed = sname, -i, changed or (companionSpells[sname] ~= -i);
 		inorder, last = last and cname and inorder and (cname >= last), cname;
 	end
 	if changed then EC_Raise("ORL.COMPANION_CACHE_UPDATE"); end

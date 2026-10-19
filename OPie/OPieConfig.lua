@@ -248,7 +248,7 @@ end
 local function OPC_Profile_AddNew()
 	local eb = _G[this:GetParent():GetName().."EditBox"];
 	local name = eb:GetText():match("^%s*(.-)%s*$"); eb:SetText("");
-	if name == "" or OneRingLib:ProfileExists(kn) then return; end
+	if name == "" or OneRingLib:ProfileExists(name) then return; end
 	StaticPopup_Hide("ORC_PNAME");
 	config.pushUndo("ProfileCreate", OneRingLib.DeleteProfile, OneRingLib, name);
 	OPC_Profile.switch(nil, name, true);
