@@ -12,7 +12,7 @@ The first commit is the unmodified release, as downloaded from [Warperia](https:
 - `OPie/Meta/RingKeeperConfig.lua`: shift-clicking an item or spell into an empty slice macro adds `/use` or `/cast` in front again. The "macro is empty" flag was never set, so the prefix was never added.
 - `OPie/OneRingLib.lua`: the companion and mount cache only reports a change when an index really moved. It compared against an unset variable (`csID`), so every companion update counted as a change and rebuilt the rings.
 - `OPie/Rings/EvermoreArchaeology.lua`: an editable Archaeology ring uses the ArchaeologyUI addon for Survey, Research and toggling dig-site minimap pins.
-- `OPie/Rings/EvermoreProfessions.lua`: a Professions ring with Milling and Prospecting shortcuts that open Retail Professions' herbs or ore view, plus the Archaeology ring when ArchaeologyUI is loaded. The `Evermore*` file and ring names are kept so saved rings and bindings keep working.
+- `OPie/Rings/EvermoreProfessions.lua`: a Professions ring with Milling and Prospecting shortcuts that open Retail Professions' herbs or ore view, plus the Archaeology ring when ArchaeologyUI is loaded. The file and ring names are kept so saved rings and bindings keep working.
 
 ## Requirements
 
