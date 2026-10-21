@@ -11,7 +11,8 @@ The first commit is the unmodified release, as downloaded from [Warperia](https:
 - `OPie/OPieConfig.lua`: creating a profile with a name that already exists is refused again. The check read an unset variable (`kn`) instead of the typed name, so the duplicate went through and its undo step could delete the existing profile.
 - `OPie/Meta/RingKeeperConfig.lua`: shift-clicking an item or spell into an empty slice macro adds `/use` or `/cast` in front again. The "macro is empty" flag was never set, so the prefix was never added.
 - `OPie/OneRingLib.lua`: the companion and mount cache only reports a change when an index really moved. It compared against an unset variable (`csID`), so every companion update counted as a change and rebuilt the rings.
-- `OPie/Rings/EvermoreArchaeology.lua`: an editable Archaeology ring uses Evermore's ArchaeologyUI addon for Survey, Research and toggling dig-site minimap pins.
+- `OPie/Rings/EvermoreArchaeology.lua`: an editable Archaeology ring uses the ArchaeologyUI addon for Survey, Research and toggling dig-site minimap pins.
+- `OPie/Rings/EvermoreProfessions.lua`: a Professions ring with Milling and Prospecting shortcuts that open Retail Professions' herbs or ore view, plus the Archaeology ring when ArchaeologyUI is loaded. The file and ring names are kept so saved rings and bindings keep working.
 
 ## Requirements
 
@@ -26,7 +27,7 @@ Copy the `OPie` folder into `Interface/AddOns`, so you end up with `Interface/Ad
 - `/opie` (or `/op`) opens the options, where you bind a key to each ring.
 - `/rk` (RingKeeper) adds, edits and removes rings and their slices.
 
-## Evermore archaeology
+## Archaeology ring
 
 Install and enable `ArchaeologyUI` from
 [wow-mod-archaeology](https://github.com/buildthehomelab/wow-mod-archaeology/tree/main/addon/ArchaeologyUI)
@@ -45,16 +46,9 @@ ArchaeologyUI is optional: without it, OPie does not register this default ring.
 The existing archaeology module and its normal client requirements still apply;
 this integration needs no additional server change or client patch.
 
-### Validation
+Not yet tried in a game client: radial selection, macro execution, saved bindings and combat behavior of this ring.
 
-All OPie Lua files compile under Lua 5.1. Mocked checks cover dependency/API
-guards, registration and the absence of a forced binding. The actual RingKeeper
-macro parser preserves these commands, and ArchaeologyUI's slash handler sends
-them to the expected action endpoints in the harness.
-Radial selection, macro execution, saved bindings and combat behavior still
-require testing in the 3.3.5a game client. This integration has not been deployed.
-
-## Evermore professions ring
+## Professions ring
 
 With `RetailProfessions` enabled, the **Professions** ring adds **Milling** and
 **Prospecting** shortcuts for characters who know those abilities. Each shortcut
@@ -70,7 +64,7 @@ The shortcuts use Retail Professions' existing pending-view API and localized
 Inscription/Jewelcrafting casts through OPie's secure macro buttons. They require
 the realm's normal Retail Professions setup and its retail crafting window.
 If you previously selected `/prof classic`, switch back with `/prof retail`.
-No server code, server manifest pin or additional client patch is needed.
+No server code or additional client patch is needed.
 Opening the profession and selecting the refine page, including repeated use,
 DragonUI hosting and combat restrictions, still need testing in the game client.
 

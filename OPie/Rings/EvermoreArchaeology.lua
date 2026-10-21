@@ -1,4 +1,4 @@
--- Evermore's ArchaeologyUI owns the survey protocol and research window.
+-- ArchaeologyUI owns the survey protocol and research window.
 -- OptionalDeps ensures it has loaded before this file when enabled.
 if not IsAddOnLoaded("ArchaeologyUI") then return; end
 local RingKeeper = type(OneRingLib) == "table" and OneRingLib.RingKeeper;
